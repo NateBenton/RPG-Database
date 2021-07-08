@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _NBGames.Scripts.RPGDatabase.Utilities;
 using _NBGames.Scripts.ScriptableObjects;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace _NBGames.Scripts.RPGDatabase.Editor
@@ -37,6 +38,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.ClassAssetList.Clear();
             UtilityHelper.HeroNameList.Clear();
             UtilityHelper.ClassNameList.Clear();
+            UtilityHelper.HeroGUIDList.Clear();
         }
 
         private void OnGUI()
@@ -56,16 +58,17 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
 
             for (var i = 0; i < UtilityHelper.AssetList.Length; i++)
             {
-                UtilityHelper.AssetList[i] = AssetDatabase.GUIDToAssetPath(UtilityHelper.AssetList[i]);
-
                 switch (dataType)
                 {
                     case 0:
+                        UtilityHelper.AssetList[i] = AssetDatabase.GUIDToAssetPath(UtilityHelper.AssetList[i]);
+                        UtilityHelper.HeroGUIDList.Add(UtilityHelper.AssetList[i]);
                         UtilityHelper.HeroAssetList.
                             Add((Hero)AssetDatabase.
                                 LoadAssetAtPath(UtilityHelper.AssetList[i], typeof(Hero)));
                         break;
                     case 1:
+                        UtilityHelper.AssetList[i] = AssetDatabase.GUIDToAssetPath(UtilityHelper.AssetList[i]);
                         UtilityHelper.ClassAssetList.
                             Add((HeroClass)AssetDatabase.
                                 LoadAssetAtPath(UtilityHelper.AssetList[i], typeof(HeroClass)));
@@ -120,6 +123,14 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         DisplayHeroAssetTabs();
                     }
                     EditorGUILayout.EndScrollView();
+
+                    EditorGUILayout.BeginHorizontal();
+                    {
+                        HeroCreateButton();
+                        DeleteHeroButton();
+                        NewHeroFields();
+                    }
+                    EditorGUILayout.EndVertical();
                 }
                 EditorGUILayout.EndVertical();
 
@@ -138,7 +149,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         
         private void HeroEditorControls()
         {
-            UtilityHelper.ScrollHeroTab = EditorGUILayout.BeginScrollView(UtilityHelper.ScrollHeroTab,
+            UtilityHelper.ScrollHeroContainer = EditorGUILayout.BeginScrollView(UtilityHelper.ScrollHeroContainer,
                 GUILayout.Width(GeneralWindowWidth));
             {
                 if (UtilityHelper.HeroAssetList.Count > 0)
@@ -155,6 +166,93 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 }
             }
             EditorGUILayout.EndScrollView();
+        }
+
+        private static void HeroCreateButton()
+        {
+            if (UtilityHelper.CreatingHero) return;
+            if (GUILayout.Button("Create", GUILayout.Width(120)))
+            {
+                UtilityHelper.CreatingHero = true;
+            }
+        }
+
+        private void NewHeroFields()
+        {
+            if (!UtilityHelper.CreatingHero) return;
+            EditorGUIUtility.labelWidth = 40;
+            GUI.SetNextControlName("heroName");
+            UtilityHelper.NewHeroName = EditorGUILayout.TextField("Name:", UtilityHelper.NewHeroName);
+            EditorGUIUtility.labelWidth = 0;
+            EditorGUI.FocusTextInControl("heroName");
+
+            if (GUILayout.Button("Create"))
+            {
+                CreateNewHero(UtilityHelper.NewHeroName);
+                UtilityHelper.NewHeroName = "New Hero";
+                RefreshWindow();
+                UtilityHelper.CreatingHero = false;
+            }
+
+            if (!GUILayout.Button("Cancel")) return;
+            UtilityHelper.NewHeroName = "New Hero";
+            UtilityHelper.CreatingHero = false;
+        }
+
+        private void DeleteHeroButton()
+        {
+            if (UtilityHelper.CreatingHero) return;
+            if (!GUILayout.Button("Delete", GUILayout.Width(120))) return;
+            var delete = EditorUtility.DisplayDialog("Delete hero?", "Are you sure you wish to delete this hero?", "Yes",
+                "Cancel");
+
+            if (!delete) return;
+
+            AssetDatabase.DeleteAsset(UtilityHelper.HeroGUIDList[UtilityHelper.CurrentHeroTab]);
+            RefreshWindow();
+
+            if (UtilityHelper.HeroNameList.Count > 1 && UtilityHelper.CurrentHeroTab != 0)
+            {
+                if (UtilityHelper.CurrentHeroTab - 1 != 0)
+                {
+                    UtilityHelper.CurrentHeroTab -= 1;
+                }
+            }
+            else
+            {
+                UtilityHelper.CurrentHeroTab = 0;
+            }
+        }
+
+        private static string GenerateFileName(int dataType)
+        {
+            var randomString = "";
+            for (var i = 0; i < 30; i++)
+            {
+                randomString += UtilityHelper.Glyph[UnityEngine.Random.Range(0, UtilityHelper.Glyph.Length)];
+            }
+
+            return dataType switch
+            {
+                1 => $"Class_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
+                _ => $"Hero_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}"
+            };
+        }
+
+        private static void CreateNewHero(string heroName)
+        {
+            var newHero = CreateInstance<Hero>();
+            newHero.HeroName = heroName;
+            var fileName = GenerateFileName(0);
+            AssetDatabase.CreateAsset(newHero, $"Assets/_NBGames/Data/Heroes/{fileName}.asset");
+        }
+
+        private void RefreshWindow()
+        {
+            ClearAssetData();
+            GetAssetData(0);
+            GetAssetData(1);
+            Repaint();
         }
     }
 }

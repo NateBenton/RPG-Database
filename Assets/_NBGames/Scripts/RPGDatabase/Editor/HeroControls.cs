@@ -13,9 +13,11 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         {
             _currentHero = UtilityHelper.HeroAssetList[UtilityHelper.CurrentHeroTab];
             var classNameList = UtilityHelper.ClassNameList.ToArray();
-
+            
+            
             EditorGUI.BeginChangeCheck();
             {
+                Undo.RecordObject(_currentHero, "Changes to hero");
                 _currentHero.HeroName = EditorGUILayout.TextField("Name:", _currentHero.HeroName);
                 _currentHero.ClassIndex = EditorGUILayout.Popup("Class:", _currentHero.ClassIndex, classNameList);
             }

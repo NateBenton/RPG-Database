@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Nate
+  m_Name: Hero_20210708190420960_J4X8YDFWRY01AECD11S19SLCHBY4PV
   m_EditorClassIdentifier: 
-  HeroName: Nate
-  Class: {fileID: 11400000, guid: 83ec2c41d7347534bb2c95c60383e535, type: 2}
+  HeroName: Madi
+  Class: {fileID: 0}
   ClassIndex: 0
