@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _NBGames.Scripts.RPGDatabase.Utilities;
 using _NBGames.Scripts.ScriptableObjects;
 using UnityEditor;
@@ -12,8 +13,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         public void GeneralSettings()
         {
             _currentHero = UtilityHelper.HeroAssetList[UtilityHelper.CurrentHeroTab];
-
-
+            
             EditorGUI.BeginChangeCheck();
             {
                 Undo.RecordObject(_currentHero, "Changes to hero");

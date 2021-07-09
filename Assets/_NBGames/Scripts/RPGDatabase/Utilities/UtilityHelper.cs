@@ -8,27 +8,37 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
 {
     public static class UtilityHelper
     {
-        public static bool ShowHeroGeneralSettings = true, CreatingHero = false, ShowHeroStats = true;
-        public static bool ShowHeroLevelCurve = true;
+        public static bool CreatingClass = false, CreatingHero = false, ShowHeroStats = true;
+        public static bool ShowHeroLevelCurve = true, CreatingSkill = false;
         public static readonly List<Hero> HeroAssetList = new List<Hero>();
         public static readonly List<HeroClass> ClassAssetList = new List<HeroClass>();
         public static readonly List<Weapon> WeaponAssetList = new List<Weapon>();
         public static readonly List<Armor> ArmorAssetList = new List<Armor>();
+        public static readonly List<Skill> SkillAssetList = new List<Skill>();
         
-        public static readonly List<string> HeroNameList = new List<string>();
-        public static readonly List<string> ClassNameList = new List<string>();
+        public static List<string> HeroNameList = new List<string>();
+        public static List<string> ClassNameList = new List<string>();
+        public static List<string> ClassNameListRaw = new List<string>();
         public static readonly List<string> WeaponNameList = new List<string>();
         public static readonly List<string> ArmorNameList = new List<string>();
+        public static List<string> SkillNameList = new List<string>();
+        public static List<string> SkillNameListRaw = new List<string>();
+        
         public static readonly List<string> HeroGuidList = new List<string>();
+        public static readonly List<string> SkillGuidList = new List<string>();
+        public static readonly List<string> ClassGuidList = new List<string>();
 
-        public static int CurrentHeroTab;
-        public static readonly string[] DatabaseTabNames = {"Heroes", "Classes", "Weapons", "Armors"};
+        public static int CurrentHeroTab, CurrentSkillTab, CurrentClassTab;
+        public static readonly string[] DatabaseTabNames = {"Heroes", "Classes", "Skills", "Weapons", "Armors"};
         private static string[] _assetList;
-        public static Vector2 ScrollHeroTab, ScrollHeroContainer;
+        public static Vector2 ScrollHeroTab, ScrollHeroContainer, ScrollSkillTab, ScrollSkillContainer, ScrollClassTab;
+        public static Vector2 ScrollClassContainer;
         public static int CurrentDatabaseTab;
 
         private const string Glyph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         public static string NewHeroName = "New Hero";
+        public static string NewSkillName = "New Skill";
+        public static string NewClassName = "New Class";
 
         public static Action onRefreshWindow;
         public static void RefreshWindow()
@@ -44,6 +54,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                 1 => AssetDatabase.FindAssets("t:HeroClass"),
                 2 => AssetDatabase.FindAssets("t:Weapon"),
                 3 => AssetDatabase.FindAssets("t:Armor"),
+                4 => AssetDatabase.FindAssets("t:Skill"),
                 _ => _assetList
             };
 
@@ -60,6 +71,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                                 LoadAssetAtPath(_assetList[i], typeof(Hero)));
                         break;
                     case 1:
+                        ClassGuidList.Add(_assetList[i]);
                         ClassAssetList.
                             Add((HeroClass)AssetDatabase.
                                 LoadAssetAtPath(_assetList[i], typeof(HeroClass)));
@@ -73,6 +85,12 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                         ArmorAssetList.
                             Add((Armor)AssetDatabase.
                                 LoadAssetAtPath(_assetList[i], typeof(Armor)));
+                        break;
+                    case 4:
+                        SkillGuidList.Add(_assetList[i]);
+                        SkillAssetList.
+                            Add((Skill)AssetDatabase.
+                                LoadAssetAtPath(_assetList[i], typeof(Skill)));
                         break;
                 }
             }
@@ -91,6 +109,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     foreach (var heroClass in ClassAssetList)
                     {
                         ClassNameList.Add(heroClass.ClassName);
+                        ClassNameListRaw.Add(heroClass.ClassName);
                     }
 
                     break;
@@ -110,6 +129,14 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     }
 
                     break;
+                case 4:
+                    foreach (var skill in SkillAssetList)
+                    {
+                        SkillNameList.Add(skill.SkillName);
+                        SkillNameListRaw.Add(skill.SkillName);
+                    }
+
+                    break;
             }
         }
        
@@ -124,6 +151,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
            return dataType switch
            {
                1 => $"Class_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
+               2 => $"Skill_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
                _ => $"Hero_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}"
            };
        }
@@ -132,9 +160,17 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
        {
            HeroAssetList.Clear();
            ClassAssetList.Clear();
+           WeaponAssetList.Clear();
+           SkillAssetList.Clear();
            HeroNameList.Clear();
            ClassNameList.Clear();
+           WeaponNameList.Clear();
+           SkillNameList.Clear();
            HeroGuidList.Clear();
+           SkillGuidList.Clear();
+           ClassGuidList.Clear();
+           ClassNameListRaw.Clear();
+           SkillNameListRaw.Clear();
        }
     }
 }
