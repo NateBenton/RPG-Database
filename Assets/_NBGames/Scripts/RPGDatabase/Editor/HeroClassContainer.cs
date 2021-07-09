@@ -8,6 +8,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
     public class HeroClassContainer
     {
         private bool _showGeneralSettings = true;
+        private bool _showSkillSettings = true;
         private HeroClassControls _classControls = new HeroClassControls();
 
         public void GeneralSettings()
@@ -22,6 +23,20 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                     }
                     EditorGUILayout.EndVertical();
                 }
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
+        }
+
+        public void SkillSettings()
+        {
+            _showSkillSettings = EditorGUILayout.BeginFoldoutHeaderGroup(_showSkillSettings, "Skill Settings");
+            {
+                if (!_showSkillSettings) return;
+                EditorGUILayout.BeginVertical("Box");
+                {
+                    _classControls.SkillSettings();
+                }
+                EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
         }

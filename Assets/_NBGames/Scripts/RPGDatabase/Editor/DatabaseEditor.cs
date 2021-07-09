@@ -171,10 +171,16 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 if (count > 0)
                 {
                     generalSettings();
-                    if (dataType == "Hero")
+                    switch (dataType)
                     {
-                        EditorGUILayout.Space();
-                        _heroContainer.Stats();
+                        case "Hero":
+                            EditorGUILayout.Space();
+                            _heroContainer.Stats();
+                            break;
+                        case "Class":
+                            EditorGUILayout.Space();
+                            _classContainer.SkillSettings();
+                            break;
                     }
                 }
                 else
