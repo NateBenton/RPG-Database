@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210708190529968_4Z2YXFRT8LSOWS6DGME5SV7U4YA724
+  m_Script: {fileID: 11500000, guid: 0416c8defbbffff45bd2d3f57bece70c, type: 3}
+  m_Name: Sword of a Thousand Sticks
   m_EditorClassIdentifier: 
-  HeroName: Izzi
-  Class: {fileID: 0}
-  ClassIndex: 0
+  WeaponName: Sword of a Thousand Sticks

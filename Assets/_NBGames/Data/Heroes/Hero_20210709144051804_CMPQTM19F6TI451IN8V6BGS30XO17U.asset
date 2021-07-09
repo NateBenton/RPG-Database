@@ -10,8 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210708190411905_X753PM29295JFZWV9MO4P71QT3YDZG
+  m_Name: Hero_20210709144051804_CMPQTM19F6TI451IN8V6BGS30XO17U
   m_EditorClassIdentifier: 
-  HeroName: Nate
+  HeroName: Tinsley
+  Description: 
   Class: {fileID: 0}
+  Weapon: {fileID: 0}
+  Armor: {fileID: 0}
+  Stats:
+    Experience: 0
+    CurrentLevel: 0
+    MaxLevel: 0
+    CurrentHp: 0
+    CurrentMp: 0
+    MaxHp: 0
+    MaxMp: 0
+    Attack: 0
+    Defense: 0
   ClassIndex: 0
+  WeaponIndex: 0
+  ArmorIndex: 0

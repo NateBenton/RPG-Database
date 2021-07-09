@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
+  m_Name: Hero_20210709142046222_COQVL5XM15RD67ZNQ9LN47Q30G962W
+  m_EditorClassIdentifier: 
+  HeroName: Kate
+  Description: Sexiest mf MILF!
+  Class: {fileID: 11400000, guid: 4768683223a3bb94b9908e6eec0895f6, type: 2}
+  Weapon: {fileID: 11400000, guid: 88a38c86f85c41e4aa9d0515cfe228b8, type: 2}
+  Armor: {fileID: 11400000, guid: 891d62e343cc2cc4f9a4a847523e36e2, type: 2}
+  Stats:
+    Experience: 100
+    CurrentLevel: 7
+    MaxLevel: 25
+    CurrentHp: 0
+    CurrentMp: 0
+    MaxHp: 0
+    MaxMp: 0
+    Attack: 10
+    Defense: 15
+  Sprite: {fileID: 0}
+  ClassIndex: 2
+  WeaponIndex: 1
+  ArmorIndex: 1
