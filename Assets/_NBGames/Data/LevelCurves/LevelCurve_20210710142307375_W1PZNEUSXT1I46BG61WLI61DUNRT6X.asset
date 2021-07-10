@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc69342efbc9fa48978719682502586, type: 3}
+  m_Name: LevelCurve_20210710142307375_W1PZNEUSXT1I46BG61WLI61DUNRT6X
+  m_EditorClassIdentifier: 
+  CurveName: Black Mage
+  AmountOfLevels: 0
+  AttackMultiplier: 1.07
+  DefenseMultiplier: 1.07
+  MaxHpMultiplier: 1.14
+  MaxMpMultiplier: 1.105
+  ExpMultiplier: 1.2
+  BaseAttack: 10
+  BaseDefense: 10
+  BaseHp: 500
+  BaseMp: 500
+  BaseExp: 100
+  MaxAttack: 255
+  MaxDefense: 255
+  MaxHp: 9999
+  MaxMp: 999
+  Hp: 
+  Mp: 
+  Attack: 
+  Defense: 
+  ExpToNextLevel: 

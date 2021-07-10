@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _NBGames.Scripts.RPGDatabase.Misc;
 using _NBGames.Scripts.ScriptableObjects;
 using UnityEditor;
 using UnityEngine;
@@ -9,12 +10,13 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
     public static class UtilityHelper
     {
         public static bool CreatingClass = false, CreatingHero = false, ShowHeroStats = true;
-        public static bool ShowHeroLevelCurve = true, CreatingSkill = false;
+        public static bool ShowHeroLevelCurve = true, CreatingSkill = false, CreatingCurve = false;
         public static readonly List<Hero> HeroAssetList = new List<Hero>();
         public static readonly List<HeroClass> ClassAssetList = new List<HeroClass>();
         public static readonly List<Weapon> WeaponAssetList = new List<Weapon>();
         public static readonly List<Armor> ArmorAssetList = new List<Armor>();
         public static readonly List<Skill> SkillAssetList = new List<Skill>();
+        public static readonly List<LevelCurve> CurveAssetList = new List<LevelCurve>();
         
         public static List<string> HeroNameList = new List<string>();
         public static List<string> ClassNameList = new List<string>();
@@ -23,22 +25,28 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
         public static readonly List<string> ArmorNameList = new List<string>();
         public static List<string> SkillNameList = new List<string>();
         public static List<string> SkillNameListRaw = new List<string>();
+        public static List<string> CurveNameList = new List<string>();
+        public static List<string> CurveNameListRaw = new List<string>();
         
         public static readonly List<string> HeroGuidList = new List<string>();
         public static readonly List<string> SkillGuidList = new List<string>();
         public static readonly List<string> ClassGuidList = new List<string>();
+        public static readonly List<string> CurveGuidList = new List<string>();
 
-        public static int CurrentHeroTab, CurrentSkillTab, CurrentClassTab;
-        public static readonly string[] DatabaseTabNames = {"Heroes", "Classes", "Skills", "Weapons", "Armors"};
+        public static int CurrentHeroTab, CurrentSkillTab, CurrentClassTab, CurrentCurveTab;
+        public static readonly string[] DatabaseTabNames = {"Heroes", "Classes", 
+           "Skills",  "Level Curves", "Weapons", "Armors"};
+        
         private static string[] _assetList;
         public static Vector2 ScrollHeroTab, ScrollHeroContainer, ScrollSkillTab, ScrollSkillContainer, ScrollClassTab;
-        public static Vector2 ScrollClassContainer;
+        public static Vector2 ScrollClassContainer, ScrollCurveTab, ScrollCurveContainer;
         public static int CurrentDatabaseTab;
 
         private const string Glyph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         public static string NewHeroName = "New Hero";
         public static string NewSkillName = "New Skill";
         public static string NewClassName = "New Class";
+        public static string NewCurveName = "New Level Curve";
 
         public static Action onRefreshWindow;
         public static void RefreshWindow()
@@ -55,6 +63,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                 2 => AssetDatabase.FindAssets("t:Weapon"),
                 3 => AssetDatabase.FindAssets("t:Armor"),
                 4 => AssetDatabase.FindAssets("t:Skill"),
+                5 => AssetDatabase.FindAssets("t:LevelCurve"),
                 _ => _assetList
             };
 
@@ -91,6 +100,12 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                         SkillAssetList.
                             Add((Skill)AssetDatabase.
                                 LoadAssetAtPath(_assetList[i], typeof(Skill)));
+                        break;
+                    case 5:
+                        CurveGuidList.Add(_assetList[i]);
+                        CurveAssetList.
+                            Add((LevelCurve)AssetDatabase.
+                                LoadAssetAtPath(_assetList[i], typeof(LevelCurve)));
                         break;
                 }
             }
@@ -137,6 +152,15 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     }
 
                     break;
+                case 5:
+                    CurveNameList.Add("None");
+                    foreach (var curve in CurveAssetList)
+                    {
+                        CurveNameList.Add(curve.CurveName);
+                        CurveNameListRaw.Add(curve.CurveName);
+                    }
+
+                    break;
             }
         }
        
@@ -152,6 +176,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
            {
                1 => $"Class_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
                2 => $"Skill_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
+               5 => $"LevelCurve_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}",
                _ => $"Hero_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}"
            };
        }
@@ -171,6 +196,10 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
            ClassGuidList.Clear();
            ClassNameListRaw.Clear();
            SkillNameListRaw.Clear();
+           CurveNameList.Clear();
+           CurveNameListRaw.Clear();
+           CurveGuidList.Clear();
+           CurveAssetList.Clear();
        }
     }
 }

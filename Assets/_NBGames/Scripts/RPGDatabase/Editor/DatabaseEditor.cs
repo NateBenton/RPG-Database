@@ -15,6 +15,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         private readonly HeroContainer _heroContainer = new HeroContainer();
         private readonly SkillsContainer _skillsContainer = new SkillsContainer();
         private readonly HeroClassContainer _classContainer = new HeroClassContainer();
+        private readonly CurveContainer _curveContainer = new CurveContainer();
 
         [MenuItem("NBGames/RPG Editor")]
 
@@ -30,6 +31,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.GetAssetData(2);
             UtilityHelper.GetAssetData(3);
             UtilityHelper.GetAssetData(4);
+            UtilityHelper.GetAssetData(5);
 
             UtilityHelper.onRefreshWindow += RefreshWindow;
         }
@@ -94,6 +96,19 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         DeleteSkillButton,
                         NewSkillsFields,
                         SkillEditorControls
+                    );
+                    break;
+                case 3:
+                    TabLayout
+                    (
+                        UtilityHelper.CurveAssetList.Count, 
+                        ref UtilityHelper.CurveNameListRaw, 
+                        ref UtilityHelper.CurrentCurveTab, 
+                        ref UtilityHelper.ScrollCurveTab, 
+                        CreateCurveButton,
+                        DeleteCurveButton,
+                        NewCurveFields,
+                        CurveEditorControls
                     );
                     break;
             }
@@ -163,6 +178,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.SkillAssetList.Count, _skillsContainer.GeneralSettings, "Skill");
         }
 
+        private void CurveEditorControls()
+        {
+            EditorControls(ref UtilityHelper.ScrollCurveContainer, 
+                UtilityHelper.CurveAssetList.Count, _curveContainer.GeneralSettings, "Curve");
+        }
+
         private void EditorControls(ref Vector2 scrollContainer, int count, Action generalSettings, string dataType)
         {
             scrollContainer = EditorGUILayout.BeginScrollView(scrollContainer,
@@ -180,6 +201,14 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         case "Class":
                             EditorGUILayout.Space();
                             _classContainer.SkillSettings();
+                            break;
+                        case "Curve":
+                            EditorGUILayout.Space();
+                            _curveContainer.BaseStats();
+                            EditorGUILayout.Space();
+                            _curveContainer.MaxStats();
+                            EditorGUILayout.Space();
+                            _curveContainer.CurveSettings();
                             break;
                     }
                 }
@@ -205,6 +234,11 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         private static void CreateSkillButton()
         {
             CreateButton(ref UtilityHelper.CreatingSkill);
+        }
+
+        private static void CreateCurveButton()
+        {
+            CreateButton(ref UtilityHelper.CreatingCurve);
         }
 
         private static void CreateButton(ref bool isCreating)
@@ -248,6 +282,18 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.SkillGuidList[UtilityHelper.CurrentHeroTab], 
                 UtilityHelper.SkillNameList.Count, 
                 ref UtilityHelper.CurrentSkillTab
+            );
+        }
+
+        private static void DeleteCurveButton()
+        {
+            if (UtilityHelper.CurveAssetList.Count == 0) return;
+            DeleteButton(
+                UtilityHelper.CreatingCurve, 
+                "level curve", 
+                UtilityHelper.CurveGuidList[UtilityHelper.CurrentCurveTab], 
+                UtilityHelper.CurveNameList.Count, 
+                ref UtilityHelper.CurrentCurveTab
             );
         }
 
@@ -316,6 +362,16 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 "New Skill");
         }
 
+        private static void NewCurveFields()
+        {
+            NewFields(ref UtilityHelper.CreatingCurve, 
+                ref UtilityHelper.NewCurveName,
+                CurveContainer.CreateNewCurve,
+                ref UtilityHelper.CurrentCurveTab,
+                UtilityHelper.CurveAssetList.Count,
+                "New Level Curve");
+        }
+
         private static void NewFields(ref bool isCreating, ref string newName, 
             Action<string> createNewObject, ref int currentAssetTab, int assetCount, string defaultNewName)
         {
@@ -353,6 +409,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.GetAssetData(2);
             UtilityHelper.GetAssetData(3);
             UtilityHelper.GetAssetData(4);
+            UtilityHelper.GetAssetData(5);
             Repaint();
         }
     }

@@ -52,8 +52,6 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 _currentClass.LevelsLearned.RemoveAt(_currentClass.LevelsLearned.Count - 1);
                 _currentClass.SkillFields.RemoveAt(_currentClass.SkillFields.Count - 1);
             }
-            
-            Debug.Log(_currentClass.SkillIds.Count);
         }
 
         public void SkillSettings()
