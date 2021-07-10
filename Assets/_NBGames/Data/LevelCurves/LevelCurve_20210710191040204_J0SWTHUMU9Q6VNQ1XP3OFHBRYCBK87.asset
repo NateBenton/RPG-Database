@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc69342efbc9fa48978719682502586, type: 3}
   m_Name: LevelCurve_20210710191040204_J0SWTHUMU9Q6VNQ1XP3OFHBRYCBK87
   m_EditorClassIdentifier: 
-  CurveName: White Mage
+  CurveName: Red Mage
   AmountOfLevels: 50
   AttackMultiplier: 1.07
   DefenseMultiplier: 1.07

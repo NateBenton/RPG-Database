@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
   m_Name: Skill_20210710200026395_8W6X44LBUHQLHOGYO5REPHAW5BXX90
   m_EditorClassIdentifier: 
-  SkillName: Te
+  SkillName: Fire
   Description: 
   MpCost: 0

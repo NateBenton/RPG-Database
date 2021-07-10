@@ -9,6 +9,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
     {
         private bool _showGeneralSettings = true;
         private bool _showSkillSettings = true;
+        private bool _showLevelSettings = true;
         private HeroClassControls _classControls = new HeroClassControls();
 
         public void GeneralSettings()
@@ -35,6 +36,20 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 EditorGUILayout.BeginVertical("Box");
                 {
                     _classControls.SkillSettings();
+                }
+                EditorGUILayout.EndVertical();
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
+        }
+
+        public void LevelCurveSettings()
+        {
+            _showLevelSettings = EditorGUILayout.BeginFoldoutHeaderGroup(_showLevelSettings, "Level Curve Settings");
+            {
+                if (!_showLevelSettings) return;
+                EditorGUILayout.BeginVertical("Box");
+                {
+                    _classControls.LevelCurveSettings();
                 }
                 EditorGUILayout.EndVertical();
             }

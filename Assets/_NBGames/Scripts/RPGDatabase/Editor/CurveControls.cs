@@ -49,6 +49,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.CurveNameListRaw[UtilityHelper.CurrentSkillTab] = _currentCurve.CurveName;
             ReadjustCurveLists();
             EditorUtility.SetDirty(_currentCurve);
+            RefreshCurves();
         }
 
         public void BaseStats()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc69342efbc9fa48978719682502586, type: 3}
   m_Name: LevelCurve_20210710142307375_W1PZNEUSXT1I46BG61WLI61DUNRT6X
   m_EditorClassIdentifier: 
-  CurveName: Tets
+  CurveName: Black Mage
   AmountOfLevels: 50
   AttackMultiplier: 1.07
   DefenseMultiplier: 1.07

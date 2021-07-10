@@ -89,6 +89,29 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             EditorUtility.SetDirty(_currentClass);
         }
 
+        public void LevelCurveSettings()
+        {
+            _currentClass = UtilityHelper.ClassAssetList[UtilityHelper.CurrentClassTab];
+            
+            EditorGUI.BeginChangeCheck();
+            {
+                EditorGUILayout.BeginVertical();
+                {
+                    EditorGUIUtility.labelWidth = 75;
+                    
+                    _currentClass.CurveIndex = EditorGUILayout.Popup("Level Curve:", _currentClass.CurveIndex,
+                        UtilityHelper.CurveNameList.ToArray());
+                    
+                    EditorGUIUtility.labelWidth = 0;
+                }
+                EditorGUILayout.EndVertical();
+            }
+            if (!EditorGUI.EndChangeCheck()) return;
+
+            _currentClass.LevelCurve = _currentClass.CurveIndex == 0 
+                ? null : UtilityHelper.CurveAssetList[_currentClass.CurveIndex - 1];
+        }
+
         private static void RefreshClasses()
         {
             UtilityHelper.ClassNameList.Clear();

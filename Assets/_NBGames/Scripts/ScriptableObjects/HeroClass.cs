@@ -10,6 +10,8 @@ namespace _NBGames.Scripts.ScriptableObjects
         public string ClassName;
         public int SkillsToLearn;
         public List<SkillField> SkillFields = new List<SkillField>();
+        public LevelCurve LevelCurve;
+        public int CurveIndex;
         public List<int> SkillIds = new List<int>();
         public List<int> LevelsLearned = new List<int>();
     }

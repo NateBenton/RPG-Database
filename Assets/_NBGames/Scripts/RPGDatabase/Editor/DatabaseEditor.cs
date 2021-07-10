@@ -201,6 +201,8 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         case "Class":
                             EditorGUILayout.Space();
                             _classContainer.SkillSettings();
+                            EditorGUILayout.Space();
+                            _classContainer.LevelCurveSettings();
                             break;
                         case "Curve":
                             EditorGUILayout.Space();
