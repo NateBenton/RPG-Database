@@ -30,11 +30,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.ClassNameList[UtilityHelper.CurrentClassTab] = _currentClass.ClassName;
+            UtilityHelper.ClassNameListRaw[UtilityHelper.CurrentClassTab] = _currentClass.ClassName;
 
             ReadjustSkillLists();
             
             EditorUtility.SetDirty(_currentClass);
+            RefreshClasses();
         }
 
         private void ReadjustSkillLists()
@@ -84,7 +85,17 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 EditorGUIUtility.labelWidth = 0;
             }
             if (!EditorGUI.EndChangeCheck()) return;
+            
             EditorUtility.SetDirty(_currentClass);
+        }
+
+        private static void RefreshClasses()
+        {
+            UtilityHelper.ClassNameList.Clear();
+            UtilityHelper.ClassNameListRaw.Clear();
+            UtilityHelper.ClassGuidList.Clear();
+            UtilityHelper.ClassAssetList.Clear();
+            UtilityHelper.GetAssetData(1);
         }
     }
 }

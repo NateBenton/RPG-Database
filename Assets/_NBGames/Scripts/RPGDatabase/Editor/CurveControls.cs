@@ -46,7 +46,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.CurveNameList[UtilityHelper.CurrentSkillTab] = _currentCurve.CurveName;
+            UtilityHelper.CurveNameListRaw[UtilityHelper.CurrentSkillTab] = _currentCurve.CurveName;
             ReadjustCurveLists();
             EditorUtility.SetDirty(_currentCurve);
         }
@@ -73,6 +73,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
             EditorUtility.SetDirty(_currentCurve);
+            RefreshCurves();
         }
 
         public void MaxStats()
@@ -178,7 +179,18 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 EditorGUIUtility.labelWidth = 0;
             }
             if (!EditorGUI.EndChangeCheck()) return;
+            
             EditorUtility.SetDirty(_currentCurve);
+        }
+
+        private static void RefreshCurves()
+        {
+            UtilityHelper.CurveNameList.Clear();
+            UtilityHelper.CurveNameListRaw.Clear();
+            UtilityHelper.CurveGuidList.Clear();
+            UtilityHelper.CurveAssetList.Clear();
+            
+            UtilityHelper.GetAssetData(5);
         }
     }
 }

@@ -27,8 +27,19 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.SkillNameList[UtilityHelper.CurrentSkillTab] = _currentSkill.SkillName;
+            UtilityHelper.SkillNameListRaw[UtilityHelper.CurrentSkillTab] = _currentSkill.SkillName;
             EditorUtility.SetDirty(_currentSkill);
+            RefreshSkills();
+        }
+
+        private static void RefreshSkills()
+        {
+            UtilityHelper.SkillNameList.Clear();
+            UtilityHelper.SkillNameListRaw.Clear();
+            UtilityHelper.SkillGuidList.Clear();
+            UtilityHelper.SkillAssetList.Clear();
+            
+            UtilityHelper.GetAssetData(4);
         }
     }
 }

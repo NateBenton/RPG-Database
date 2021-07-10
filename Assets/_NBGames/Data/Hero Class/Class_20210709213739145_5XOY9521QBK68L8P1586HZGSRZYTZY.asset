@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClassName: Black Mage
   SkillsToLearn: 2
-  SkillFields: []
-  SkillIds: 
-  LevelsLearned: 
+  SkillFields:
+  - SkillLearned: {fileID: 11400000, guid: f86b7a556c18cfc44ad1b71cd763f098, type: 2}
+    LevelLearned: 0
+  - SkillLearned: {fileID: 0}
+    LevelLearned: 0
+  SkillIds: 0100000000000000
+  LevelsLearned: 0500000000000000
