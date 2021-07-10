@@ -145,6 +145,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
 
                     break;
                 case 4:
+                    SkillNameList.Add("None");
                     foreach (var skill in SkillAssetList)
                     {
                         SkillNameList.Add(skill.SkillName);

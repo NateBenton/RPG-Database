@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
-  m_Name: Skill_20210709223130197_BY3SW6ABR1TPUA5KGN3FVCA120FTRK
+  m_Name: Skill_20210710200026395_8W6X44LBUHQLHOGYO5REPHAW5BXX90
   m_EditorClassIdentifier: 
-  SkillName: Fire
+  SkillName: New Skill
   Description: 
   MpCost: 0

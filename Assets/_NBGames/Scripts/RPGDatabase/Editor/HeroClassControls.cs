@@ -68,13 +68,16 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         EditorGUIUtility.labelWidth = 45;
                         _currentClass.SkillIds[i] = EditorGUILayout.Popup("Skill:", _currentClass.SkillIds[i], 
                             UtilityHelper.SkillNameList.ToArray());
-                        
+
                         EditorGUIUtility.labelWidth = 90;
                         
                         _currentClass.LevelsLearned[i] =
                             EditorGUILayout.IntField("Level Learned:", _currentClass.LevelsLearned[i]);
+                        
 
-                        _currentClass.SkillFields[i].SkillLearned = UtilityHelper.SkillAssetList[_currentClass.SkillIds[i]];
+                        _currentClass.SkillFields[i].SkillLearned
+                            = _currentClass.SkillIds[i] != 0 ?
+                                UtilityHelper.SkillAssetList[_currentClass.SkillIds[i] - 1] : null;
                     }
                     EditorGUILayout.EndHorizontal();
                 }
