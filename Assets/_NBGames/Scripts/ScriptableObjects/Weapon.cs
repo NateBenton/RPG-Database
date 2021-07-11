@@ -3,8 +3,8 @@ using UnityEngine;
 namespace _NBGames.Scripts.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Weapon", menuName = "NBGames/Weapon")]
-    public class Weapon : ScriptableObject
+    public class Weapon : Equipment
     {
-        public string WeaponName;
+        
     }
 }

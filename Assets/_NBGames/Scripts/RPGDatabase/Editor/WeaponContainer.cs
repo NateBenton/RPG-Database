@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace _NBGames.Scripts.RPGDatabase.Editor
 {
-    public class SkillsContainer
+    public class WeaponContainer
     {
         private bool _showGeneralSettings = true;
-        private SkillsControls _skillsControls = new SkillsControls();
+        private WeaponControls _weaponControls = new WeaponControls();
 
         public void GeneralSettings()
         {
@@ -18,7 +18,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 {
                     EditorGUILayout.BeginVertical("Box");
                     {
-                        _skillsControls.GeneralSettings();
+                        _weaponControls.GeneralSettings();
                     }
                     EditorGUILayout.EndVertical();
                 }
@@ -26,12 +26,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             EditorGUILayout.EndFoldoutHeaderGroup();
         }
         
-        public static void CreateNewSkill(string skillName)
+        public static void CreateNewWeapon(string weaponName)
         {
-            var newSkill = ScriptableObject.CreateInstance<Skill>();
-            newSkill.SkillName = skillName;
-            var fileName = UtilityHelper.GenerateFileName(4);
-            AssetDatabase.CreateAsset(newSkill, $"Assets/_NBGames/Data/Skills/{fileName}.asset");
+            var newWeapon = ScriptableObject.CreateInstance<Weapon>();
+            newWeapon.Name = weaponName;
+            var fileName = UtilityHelper.GenerateFileName(2);
+            AssetDatabase.CreateAsset(newWeapon, $"Assets/_NBGames/Data/Weapons/{fileName}.asset");
         }
     }
 }

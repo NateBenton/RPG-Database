@@ -16,6 +16,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         private readonly SkillsContainer _skillsContainer = new SkillsContainer();
         private readonly HeroClassContainer _classContainer = new HeroClassContainer();
         private readonly CurveContainer _curveContainer = new CurveContainer();
+        private readonly WeaponContainer _weaponContainer = new WeaponContainer();
 
         [MenuItem("NBGames/RPG Editor")]
 
@@ -47,6 +48,17 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             DisplayDatabaseTabs();
             EditorGUILayout.Space();
             DisplayWindowContent();
+            CheckTabChange();
+        }
+
+        private static void CheckTabChange()
+        {
+            if (UtilityHelper.PreviousDatabaseTab != UtilityHelper.CurrentDatabaseTab)
+            {
+                GUI.FocusControl(null);
+            }
+
+            UtilityHelper.PreviousDatabaseTab = UtilityHelper.CurrentDatabaseTab;
         }
         
         private static void DisplayDatabaseTabs()
@@ -109,6 +121,19 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         DeleteCurveButton,
                         NewCurveFields,
                         CurveEditorControls
+                    );
+                    break;
+                case 4:
+                    TabLayout
+                    (
+                        UtilityHelper.WeaponAssetList.Count, 
+                        ref UtilityHelper.WeaponNameListRaw, 
+                        ref UtilityHelper.CurrentWeaponTab, 
+                        ref UtilityHelper.ScrollWeaponTab, 
+                        CreateWeaponButton,
+                        DeleteWeaponButton,
+                        NewWeaponFields,
+                        WeaponEditorControls
                     );
                     break;
             }
@@ -184,6 +209,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.CurveAssetList.Count, _curveContainer.GeneralSettings, "Curve");
         }
 
+        private void WeaponEditorControls()
+        {
+            EditorControls(ref UtilityHelper.ScrollWeaponContainer, 
+                UtilityHelper.WeaponAssetList.Count, _weaponContainer.GeneralSettings, "Weapon");
+        }
+
         private void EditorControls(ref Vector2 scrollContainer, int count, Action generalSettings, string dataType)
         {
             scrollContainer = EditorGUILayout.BeginScrollView(scrollContainer,
@@ -243,6 +274,11 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             CreateButton(ref UtilityHelper.CreatingCurve);
         }
 
+        private static void CreateWeaponButton()
+        {
+            CreateButton(ref UtilityHelper.CreatingWeapon);
+        }
+
         private static void CreateButton(ref bool isCreating)
         {
             if (isCreating) return;
@@ -296,6 +332,18 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.CurveGuidList[UtilityHelper.CurrentCurveTab], 
                 UtilityHelper.CurveNameList.Count, 
                 ref UtilityHelper.CurrentCurveTab
+            );
+        }
+
+        private static void DeleteWeaponButton()
+        {
+            if (UtilityHelper.WeaponAssetList.Count == 0) return;
+            DeleteButton(
+                UtilityHelper.CreatingWeapon, 
+                "weapon", 
+                UtilityHelper.WeaponGuidList[UtilityHelper.CurrentWeaponTab], 
+                UtilityHelper.WeaponNameList.Count, 
+                ref UtilityHelper.CurrentWeaponTab
             );
         }
 
@@ -372,6 +420,16 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 ref UtilityHelper.CurrentCurveTab,
                 UtilityHelper.CurveAssetList.Count,
                 "New Level Curve");
+        }
+        
+        private static void NewWeaponFields()
+        {
+            NewFields(ref UtilityHelper.CreatingWeapon, 
+                ref UtilityHelper.NewWeaponName,
+                WeaponContainer.CreateNewWeapon,
+                ref UtilityHelper.CurrentWeaponTab,
+                UtilityHelper.WeaponAssetList.Count,
+                "New Weapon");
         }
 
         private static void NewFields(ref bool isCreating, ref string newName, 
