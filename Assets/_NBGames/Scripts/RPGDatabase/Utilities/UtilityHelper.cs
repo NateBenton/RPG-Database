@@ -10,7 +10,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
     public static class UtilityHelper
     {
         public static bool CreatingClass = false, CreatingHero = false, ShowHeroStats = true;
-        public static bool ShowHeroLevelCurve = true, CreatingSkill = false, CreatingCurve = false;
+        public static bool CreatingSkill = false, CreatingCurve = false;
         public static bool CreatingWeapon = false, CreatingArmor = false;
         
         public static readonly List<Hero> HeroAssetList = new List<Hero>();
@@ -19,8 +19,11 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
         public static readonly List<Armor> ArmorAssetList = new List<Armor>();
         public static readonly List<Skill> SkillAssetList = new List<Skill>();
         public static readonly List<LevelCurve> CurveAssetList = new List<LevelCurve>();
+
+        public static StartingParty StartingParty;
         
         public static List<string> HeroNameList = new List<string>();
+        public static List<string> HeroNameListMod = new List<string>();
         public static List<string> ClassNameList = new List<string>();
         public static List<string> ClassNameListRaw = new List<string>();
         public static List<string> WeaponNameList = new List<string>();
@@ -42,7 +45,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
         public static int CurrentHeroTab, CurrentSkillTab, CurrentClassTab, CurrentCurveTab;
         public static int CurrentWeaponTab, CurrentArmorTab;
         public static readonly string[] DatabaseTabNames = {"Heroes", "Classes", 
-           "Skills",  "Level Curves", "Weapons", "Armors"};
+           "Skills",  "Level Curves", "Weapons", "Armors", "Party"};
         
         private static string[] _assetList;
         public static Vector2 ScrollHeroTab, ScrollHeroContainer, ScrollSkillTab, ScrollSkillContainer, ScrollClassTab;
@@ -75,6 +78,7 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                 3 => AssetDatabase.FindAssets("t:Armor"),
                 4 => AssetDatabase.FindAssets("t:Skill"),
                 5 => AssetDatabase.FindAssets("t:LevelCurve"),
+                6 => AssetDatabase.FindAssets("t:StartingParty"),
                 _ => _assetList
             };
 
@@ -120,15 +124,21 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                             Add((LevelCurve)AssetDatabase.
                                 LoadAssetAtPath(_assetList[i], typeof(LevelCurve)));
                         break;
+                    case 6:
+                        StartingParty = (StartingParty)AssetDatabase.
+                            LoadAssetAtPath(_assetList[i], typeof(StartingParty));
+                        break;
                 }
             }
 
             switch (dataType)
             {
                 case 0:
+                    HeroNameListMod.Add("None");
                     foreach (var hero in HeroAssetList)
                     {
                         HeroNameList.Add(hero.HeroName);
+                        HeroNameListMod.Add(hero.HeroName);
                     }
 
                     break;
@@ -198,18 +208,40 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                _ => $"Hero_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{randomString}"
            };
        }
+
+       public static void RemoveDeletedHeroesFromParty()
+       {
+           if (StartingParty.PartyIndexes[0] > HeroAssetList.Count)
+           {
+               StartingParty.PartyIndexes[0] = 0;
+               StartingParty.Party[0] = null;
+           }
+            
+           if (StartingParty.PartyIndexes[1] > HeroAssetList.Count)
+           {
+               StartingParty.PartyIndexes[1] = 0;
+               StartingParty.Party[1] = null;
+           }
+
+           if (StartingParty.PartyIndexes[2] <= HeroAssetList.Count) return;
+           StartingParty.PartyIndexes[2] = 0;
+           StartingParty.Party[2] = null;
+       }
        
        public static void ClearAssetData()
        {
            HeroAssetList.Clear();
+           HeroNameList.Clear();
+           HeroGuidList.Clear();
+           HeroNameListMod.Clear();
            ClassAssetList.Clear();
            WeaponAssetList.Clear();
            SkillAssetList.Clear();
-           HeroNameList.Clear();
+           
            ClassNameList.Clear();
            WeaponNameList.Clear();
            SkillNameList.Clear();
-           HeroGuidList.Clear();
+           
            SkillGuidList.Clear();
            ClassGuidList.Clear();
            ClassNameListRaw.Clear();
@@ -220,8 +252,11 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
            CurveAssetList.Clear();
            WeaponNameListRaw.Clear();
            ArmorNameListRaw.Clear();
-           WeaponGuidList.Clear();
+           ArmorNameList.Clear();
            ArmorGuidList.Clear();
+           ArmorAssetList.Clear();
+           WeaponGuidList.Clear();
+           StartingParty = null;
        }
     }
 }

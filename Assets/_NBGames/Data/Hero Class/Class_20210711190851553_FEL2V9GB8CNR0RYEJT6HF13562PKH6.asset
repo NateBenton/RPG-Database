@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b38e3bf683dc6e4f8ac295cb98e9622, type: 3}
-  m_Name: Class_20210709213739145_5XOY9521QBK68L8P1586HZGSRZYTZY
+  m_Name: Class_20210711190851553_FEL2V9GB8CNR0RYEJT6HF13562PKH6
   m_EditorClassIdentifier: 
-  ClassName: Black Mage
-  SkillsToLearn: 2
-  SkillFields:
-  - SkillLearned: {fileID: 11400000, guid: f86b7a556c18cfc44ad1b71cd763f098, type: 2}
-    LevelLearned: 0
-  - SkillLearned: {fileID: 0}
-    LevelLearned: 0
-  SkillIds: 0100000000000000
-  LevelsLearned: 0500000000000000
+  ClassName: Warrior
+  SkillsToLearn: 0
+  SkillFields: []
+  LevelCurve: {fileID: 0}
+  CurveIndex: 0
+  SkillIds: 
+  LevelsLearned: 

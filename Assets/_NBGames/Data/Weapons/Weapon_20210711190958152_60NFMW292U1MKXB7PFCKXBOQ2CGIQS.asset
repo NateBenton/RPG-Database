@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0416c8defbbffff45bd2d3f57bece70c, type: 3}
-  m_Name: Weapon_20210711135131597_VVNAR1VPTE7XELKKCZ1EYCBB7E7HZ8
+  m_Name: Weapon_20210711190958152_60NFMW292U1MKXB7PFCKXBOQ2CGIQS
   m_EditorClassIdentifier: 
-  Name: New Weapon
+  Name: Staff
   AttackModifier: 0
   DefenseModifier: 0
   HpModifier: 0

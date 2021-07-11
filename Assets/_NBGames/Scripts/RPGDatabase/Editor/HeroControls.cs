@@ -37,6 +37,21 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         _currentHero.ArmorIndex = EditorGUILayout.Popup("Armor:", _currentHero.ArmorIndex,
                             UtilityHelper.ArmorNameList.ToArray());
 
+                        if (UtilityHelper.WeaponAssetList.Count == 0)
+                        {
+                            _currentHero.WeaponIndex = 0;
+                        }
+
+                        if (UtilityHelper.ArmorAssetList.Count == 0)
+                        {
+                            _currentHero.ArmorIndex = 0;
+                        }
+
+                        if (UtilityHelper.ClassAssetList.Count == 0)
+                        {
+                            _currentHero.ClassIndex = 0;
+                        }
+
                         EditorGUIUtility.labelWidth = 0;
                     }
                     EditorGUILayout.EndVertical();
@@ -66,25 +81,17 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         public void Stats()
         {
             _currentHero = UtilityHelper.HeroAssetList[UtilityHelper.CurrentHeroTab];
+            if (_currentHero.Class == null) return;
             
             EditorGUI.BeginChangeCheck();
             {
                 Undo.RecordObject(_currentHero, "Changes to hero");
-                _currentHero.Stats.MaxLevel = EditorGUILayout.IntSlider("Max Level", 
-                    _currentHero.Stats.MaxLevel, 1, 99);
-
+                
                 _currentHero.Stats.CurrentLevel = EditorGUILayout.IntSlider("Starting Level",
-                    _currentHero.Stats.CurrentLevel, 1, _currentHero.Stats.MaxLevel);
+                    _currentHero.Stats.CurrentLevel, 1, _currentHero.Class.LevelCurve.AmountOfLevels);
                 
                 _currentHero.Stats.Experience = EditorGUILayout.IntSlider("Experience Points",
                     _currentHero.Stats.Experience, 1, 9999);
-                
-                _currentHero.Stats.Attack = EditorGUILayout.IntSlider("Attack",
-                    _currentHero.Stats.Attack, 1, 255);
-
-                _currentHero.Stats.Defense = EditorGUILayout.IntSlider("Defense",
-                    _currentHero.Stats.Defense, 1, 255);
-
             }
             
             if (!EditorGUI.EndChangeCheck()) return;

@@ -17,6 +17,8 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         private readonly HeroClassContainer _classContainer = new HeroClassContainer();
         private readonly CurveContainer _curveContainer = new CurveContainer();
         private readonly WeaponContainer _weaponContainer = new WeaponContainer();
+        private readonly ArmorContainer _armorContainer = new ArmorContainer();
+        private readonly PartyContainer _partyContainer = new PartyContainer();
 
         [MenuItem("NBGames/RPG Editor")]
 
@@ -33,6 +35,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.GetAssetData(3);
             UtilityHelper.GetAssetData(4);
             UtilityHelper.GetAssetData(5);
+            UtilityHelper.GetAssetData(6);
 
             UtilityHelper.onRefreshWindow += RefreshWindow;
         }
@@ -136,6 +139,22 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                         WeaponEditorControls
                     );
                     break;
+                case 5:
+                    TabLayout
+                    (
+                        UtilityHelper.ArmorAssetList.Count, 
+                        ref UtilityHelper.ArmorNameListRaw, 
+                        ref UtilityHelper.CurrentArmorTab, 
+                        ref UtilityHelper.ScrollArmorTab, 
+                        CreateArmorButton,
+                        DeleteArmorButton,
+                        NewArmorFields,
+                        ArmorEditorControls
+                    );
+                    break;
+                case 6:
+                    _partyContainer.GeneralSettings();
+                    break;
             }
         }
 
@@ -214,6 +233,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             EditorControls(ref UtilityHelper.ScrollWeaponContainer, 
                 UtilityHelper.WeaponAssetList.Count, _weaponContainer.GeneralSettings, "Weapon");
         }
+        
+        private void ArmorEditorControls()
+        {
+            EditorControls(ref UtilityHelper.ScrollArmorContainer, 
+                UtilityHelper.ArmorAssetList.Count, _armorContainer.GeneralSettings, "Armor");
+        }
 
         private void EditorControls(ref Vector2 scrollContainer, int count, Action generalSettings, string dataType)
         {
@@ -279,6 +304,11 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             CreateButton(ref UtilityHelper.CreatingWeapon);
         }
 
+        private static void CreateArmorButton()
+        {
+            CreateButton(ref UtilityHelper.CreatingArmor);
+        }
+
         private static void CreateButton(ref bool isCreating)
         {
             if (isCreating) return;
@@ -317,7 +347,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             DeleteButton(
                 UtilityHelper.CreatingSkill, 
                 "skill", 
-                UtilityHelper.SkillGuidList[UtilityHelper.CurrentHeroTab], 
+                UtilityHelper.SkillGuidList[UtilityHelper.CurrentSkillTab], 
                 UtilityHelper.SkillNameList.Count, 
                 ref UtilityHelper.CurrentSkillTab
             );
@@ -344,6 +374,18 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.WeaponGuidList[UtilityHelper.CurrentWeaponTab], 
                 UtilityHelper.WeaponNameList.Count, 
                 ref UtilityHelper.CurrentWeaponTab
+            );
+        }
+
+        private static void DeleteArmorButton()
+        {
+            if (UtilityHelper.ArmorAssetList.Count == 0) return;
+            DeleteButton(
+                UtilityHelper.CreatingArmor, 
+                "armor", 
+                UtilityHelper.ArmorGuidList[UtilityHelper.CurrentArmorTab], 
+                UtilityHelper.ArmorNameList.Count, 
+                ref UtilityHelper.CurrentArmorTab
             );
         }
 
@@ -380,6 +422,9 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             {
                 currentTab = 0;
             }
+
+            if (UtilityHelper.CurrentDatabaseTab != 0) return;
+            UtilityHelper.RemoveDeletedHeroesFromParty();
         }
 
         private static void NewHeroFields()
@@ -431,6 +476,16 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 UtilityHelper.WeaponAssetList.Count,
                 "New Weapon");
         }
+        
+        private static void NewArmorFields()
+        {
+            NewFields(ref UtilityHelper.CreatingArmor, 
+                ref UtilityHelper.NewArmorName,
+                ArmorContainer.CreateNewArmor,
+                ref UtilityHelper.CurrentArmorTab,
+                UtilityHelper.ArmorAssetList.Count,
+                "New Armor");
+        }
 
         private static void NewFields(ref bool isCreating, ref string newName, 
             Action<string> createNewObject, ref int currentAssetTab, int assetCount, string defaultNewName)
@@ -470,6 +525,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             UtilityHelper.GetAssetData(3);
             UtilityHelper.GetAssetData(4);
             UtilityHelper.GetAssetData(5);
+            UtilityHelper.GetAssetData(6);
             Repaint();
         }
     }

@@ -36,7 +36,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.WeaponNameListRaw[UtilityHelper.CurrentSkillTab] = _currentWeapon.Name;
+            UtilityHelper.WeaponNameListRaw[UtilityHelper.CurrentWeaponTab] = _currentWeapon.Name;
             EditorUtility.SetDirty(_currentWeapon);
             RefreshWeapons();
         }

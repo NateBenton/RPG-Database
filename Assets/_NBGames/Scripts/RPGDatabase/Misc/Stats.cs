@@ -6,6 +6,6 @@ namespace _NBGames.Scripts.RPGDatabase.Misc
     [Serializable]
     public class Stats
     {
-        public int Experience, CurrentLevel, MaxLevel, CurrentHp, CurrentMp, MaxHp, MaxMp, Attack, Defense;
+        public int Experience, CurrentLevel, CurrentHp, CurrentMp, MaxHp, MaxMp, Attack, Defense;
     }
 }

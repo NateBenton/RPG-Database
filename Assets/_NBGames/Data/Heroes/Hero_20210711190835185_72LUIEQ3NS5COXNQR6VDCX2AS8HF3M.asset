@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
+  m_Name: Hero_20210711190835185_72LUIEQ3NS5COXNQR6VDCX2AS8HF3M
+  m_EditorClassIdentifier: 
+  HeroName: Kav
+  Description: 
+  Class: {fileID: 11400000, guid: e9acd045251af1449b9c0b3744446830, type: 2}
+  Weapon: {fileID: 11400000, guid: e081592542e86a143af6c2c40d593aca, type: 2}
+  Armor: {fileID: 11400000, guid: 6b2651d23f8709d429749c6965c9d007, type: 2}
+  Stats:
+    Experience: 1
+    CurrentLevel: 4
+    CurrentHp: 0
+    CurrentMp: 0
+    MaxHp: 0
+    MaxMp: 0
+    Attack: 0
+    Defense: 0
+  Sprite: {fileID: 0}
+  ClassIndex: 2
+  WeaponIndex: 1
+  ArmorIndex: 1

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace _NBGames.Scripts.RPGDatabase.Editor
 {
-    public class ArmorContainer
+    public class PartyContainer
     {
         private bool _showGeneralSettings = true;
-        private ArmorControls _armorControls = new ArmorControls();
+        private PartyControls _partyControls = new PartyControls();
 
         public void GeneralSettings()
         {
@@ -18,20 +18,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 {
                     EditorGUILayout.BeginVertical("Box");
                     {
-                        _armorControls.GeneralSettings();
+                        _partyControls.GeneralSettings();
                     }
                     EditorGUILayout.EndVertical();
                 }
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
-        }
-        
-        public static void CreateNewArmor(string armorName)
-        {
-            var newArmor = ScriptableObject.CreateInstance<Armor>();
-            newArmor.Name = armorName;
-            var fileName = UtilityHelper.GenerateFileName(3);
-            AssetDatabase.CreateAsset(newArmor, $"Assets/_NBGames/Data/Armor/{fileName}.asset");
         }
     }
 }

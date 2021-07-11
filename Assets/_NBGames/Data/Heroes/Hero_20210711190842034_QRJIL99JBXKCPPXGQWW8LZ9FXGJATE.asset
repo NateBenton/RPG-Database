@@ -10,24 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210710203305564_ZLWV579DFEXZ9ERDB7K2XE5ZV3HUDT
+  m_Name: Hero_20210711190842034_QRJIL99JBXKCPPXGQWW8LZ9FXGJATE
   m_EditorClassIdentifier: 
-  HeroName: Nate
+  HeroName: Pyro
   Description: 
-  Class: {fileID: 11400000, guid: 683d7a56f04c5074ab334d6e2f52d2fa, type: 2}
-  Weapon: {fileID: 0}
-  Armor: {fileID: 0}
+  Class: {fileID: 11400000, guid: e83a8e92f86ab4c458d22f8783edad6a, type: 2}
+  Weapon: {fileID: 11400000, guid: b6ecd604489483c42a5a0cd0f16564e4, type: 2}
+  Armor: {fileID: 11400000, guid: 55c50c4b916546b43a482dccc1ee67dd, type: 2}
   Stats:
-    Experience: 1
-    CurrentLevel: 1
-    MaxLevel: 1
+    Experience: 441
+    CurrentLevel: 2
     CurrentHp: 0
     CurrentMp: 0
     MaxHp: 0
     MaxMp: 0
-    Attack: 1
-    Defense: 1
+    Attack: 0
+    Defense: 0
   Sprite: {fileID: 0}
   ClassIndex: 1
-  WeaponIndex: 0
-  ArmorIndex: 0
+  WeaponIndex: 2
+  ArmorIndex: 2
