@@ -59,7 +59,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         public static void CreateNewClass(string className)
         {
             var newClass = ScriptableObject.CreateInstance<HeroClass>();
-            newClass.ClassName = className;
+            newClass.Name = className;
             var fileName = UtilityHelper.GenerateFileName(1);
             AssetDatabase.CreateAsset(newClass, $"Assets/_NBGames/Data/Hero Class/{fileName}.asset");
         }

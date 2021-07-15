@@ -20,7 +20,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 Undo.RecordObject(_currentClass, "Changes to class");
                 EditorGUIUtility.labelWidth = 85;
                         
-                _currentClass.ClassName = EditorGUILayout.TextField("Name:", _currentClass.ClassName);
+                _currentClass.Name = EditorGUILayout.TextField("Name:", _currentClass.Name);
                 
                 _currentClass.SkillsToLearn = Mathf.Clamp(EditorGUILayout.IntField("Skills to Learn:", 
                     _currentClass.SkillsToLearn), 0, 99);
@@ -30,7 +30,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.ClassNameListRaw[UtilityHelper.CurrentClassTab] = _currentClass.ClassName;
+            UtilityHelper.ClassNameListRaw[UtilityHelper.CurrentClassTab] = _currentClass.Name;
 
             ReadjustSkillLists();
             
@@ -110,6 +110,8 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
 
             _currentClass.LevelCurve = _currentClass.CurveIndex == 0 
                 ? null : UtilityHelper.CurveAssetList[_currentClass.CurveIndex - 1];
+            
+            EditorUtility.SetDirty(_currentClass);
         }
 
         private static void RefreshClasses()

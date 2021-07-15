@@ -29,7 +29,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         public static void CreateNewSkill(string skillName)
         {
             var newSkill = ScriptableObject.CreateInstance<Skill>();
-            newSkill.SkillName = skillName;
+            newSkill.Name = skillName;
             var fileName = UtilityHelper.GenerateFileName(4);
             AssetDatabase.CreateAsset(newSkill, $"Assets/_NBGames/Data/Skills/{fileName}.asset");
         }

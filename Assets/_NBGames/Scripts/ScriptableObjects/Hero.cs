@@ -6,7 +6,7 @@ namespace _NBGames.Scripts.ScriptableObjects
     [CreateAssetMenu(fileName = "New Hero", menuName = "NBGames/Hero")]
     public class Hero : ScriptableObject
     {
-        public string HeroName, Description;
+        public string Name, Description;
         public HeroClass Class;
         public Weapon Weapon;
         public Armor Armor;

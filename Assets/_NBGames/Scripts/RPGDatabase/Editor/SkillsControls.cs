@@ -18,7 +18,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 Undo.RecordObject(_currentSkill, "Changes to skill");
                 EditorGUIUtility.labelWidth = 75;
                         
-                _currentSkill.SkillName = EditorGUILayout.TextField("Name:", _currentSkill.SkillName);
+                _currentSkill.Name = EditorGUILayout.TextField("Name:", _currentSkill.Name);
                 _currentSkill.Description = EditorGUILayout.TextField("Description:", _currentSkill.Description);
                 _currentSkill.MpCost = EditorGUILayout.IntField("MP Cost:", _currentSkill.MpCost);
 
@@ -27,7 +27,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             }
             if (!EditorGUI.EndChangeCheck()) return;
 
-            UtilityHelper.SkillNameListRaw[UtilityHelper.CurrentSkillTab] = _currentSkill.SkillName;
+            UtilityHelper.SkillNameListRaw[UtilityHelper.CurrentSkillTab] = _currentSkill.Name;
             EditorUtility.SetDirty(_currentSkill);
             RefreshSkills();
         }

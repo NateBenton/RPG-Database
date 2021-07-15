@@ -137,8 +137,8 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     HeroNameListMod.Add("None");
                     foreach (var hero in HeroAssetList)
                     {
-                        HeroNameList.Add(hero.HeroName);
-                        HeroNameListMod.Add(hero.HeroName);
+                        HeroNameList.Add(hero.Name);
+                        HeroNameListMod.Add(hero.Name);
                     }
 
                     break;
@@ -146,8 +146,8 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     ClassNameList.Add("None");
                     foreach (var heroClass in ClassAssetList)
                     {
-                        ClassNameList.Add(heroClass.ClassName);
-                        ClassNameListRaw.Add(heroClass.ClassName);
+                        ClassNameList.Add(heroClass.Name);
+                        ClassNameListRaw.Add(heroClass.Name);
                     }
 
                     break;
@@ -173,8 +173,8 @@ namespace _NBGames.Scripts.RPGDatabase.Utilities
                     SkillNameList.Add("None");
                     foreach (var skill in SkillAssetList)
                     {
-                        SkillNameList.Add(skill.SkillName);
-                        SkillNameListRaw.Add(skill.SkillName);
+                        SkillNameList.Add(skill.Name);
+                        SkillNameListRaw.Add(skill.Name);
                     }
 
                     break;

@@ -45,7 +45,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
         public static void CreateNewHero(string heroName)
         {
             var newHero = ScriptableObject.CreateInstance<Hero>();
-            newHero.HeroName = heroName;
+            newHero.Name = heroName;
             var fileName = UtilityHelper.GenerateFileName(0);
             AssetDatabase.CreateAsset(newHero, $"Assets/_NBGames/Data/Heroes/{fileName}.asset");
         }

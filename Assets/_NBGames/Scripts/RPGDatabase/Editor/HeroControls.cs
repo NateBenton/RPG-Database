@@ -20,13 +20,13 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 EditorGUILayout.BeginHorizontal();
                 {
                     _currentHero.Sprite = (Sprite) EditorGUILayout.ObjectField(_currentHero.Sprite, 
-                        typeof(Sprite), false, GUILayout.Width(70), GUILayout.Height(70));
+                        typeof(Sprite), false, GUILayout.Width(50), GUILayout.Height(80));
                     
                     EditorGUILayout.BeginVertical();
                     {
                         EditorGUIUtility.labelWidth = 75;
                         
-                        _currentHero.HeroName = EditorGUILayout.TextField("Name:", _currentHero.HeroName);
+                        _currentHero.Name = EditorGUILayout.TextField("Name:", _currentHero.Name);
                         _currentHero.Description = EditorGUILayout.TextField("Description:", _currentHero.Description);
                         _currentHero.ClassIndex = EditorGUILayout.Popup("Class:", _currentHero.ClassIndex, 
                             UtilityHelper.ClassNameList.ToArray());
@@ -74,7 +74,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 ? UtilityHelper.ArmorAssetList[_currentHero.ArmorIndex - 1]
                 : null;
 
-            UtilityHelper.HeroNameList[UtilityHelper.CurrentHeroTab] = _currentHero.HeroName;
+            UtilityHelper.HeroNameList[UtilityHelper.CurrentHeroTab] = _currentHero.Name;
             EditorUtility.SetDirty(_currentHero);
         }
 
@@ -86,9 +86,12 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
             EditorGUI.BeginChangeCheck();
             {
                 Undo.RecordObject(_currentHero, "Changes to hero");
-                
-                _currentHero.Stats.CurrentLevel = EditorGUILayout.IntSlider("Starting Level",
-                    _currentHero.Stats.CurrentLevel, 1, _currentHero.Class.LevelCurve.AmountOfLevels);
+
+                if (_currentHero.Class.LevelCurve != null)
+                {
+                    _currentHero.Stats.CurrentLevel = EditorGUILayout.IntSlider("Starting Level",
+                        _currentHero.Stats.CurrentLevel, 1, _currentHero.Class.LevelCurve.AmountOfLevels);
+                }
                 
                 _currentHero.Stats.Experience = EditorGUILayout.IntSlider("Experience Points",
                     _currentHero.Stats.Experience, 1, 9999);
@@ -109,7 +112,7 @@ namespace _NBGames.Scripts.RPGDatabase.Editor
                 ? UtilityHelper.ArmorAssetList[_currentHero.ArmorIndex - 1]
                 : null;
 
-            UtilityHelper.HeroNameList[UtilityHelper.CurrentHeroTab] = _currentHero.HeroName;
+            UtilityHelper.HeroNameList[UtilityHelper.CurrentHeroTab] = _currentHero.Name;
             EditorUtility.SetDirty(_currentHero);
         }
     }
