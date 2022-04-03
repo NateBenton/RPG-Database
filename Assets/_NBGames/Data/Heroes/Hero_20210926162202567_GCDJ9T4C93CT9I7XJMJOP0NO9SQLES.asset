@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210712173305424_YW702W6Z9Y7M639HOUP1K2VCGSH6HW
+  m_Name: Hero_20210926162202567_GCDJ9T4C93CT9I7XJMJOP0NO9SQLES
   m_EditorClassIdentifier: 
-  Name: Leroy
-  Description: A black mage.
-  Class: {fileID: 11400000, guid: 660af22b86ab39e4f9e5e93df8f28257, type: 2}
-  Weapon: {fileID: 11400000, guid: 37d14d0e255777e4cb9564073ca4708a, type: 2}
-  Armor: {fileID: 11400000, guid: 4ff94d047dcfb6c4b80de2ee9221c56d, type: 2}
+  Name: Claire
+  Description: A white mage.
+  Class: {fileID: 11400000, guid: 2dbe16321afae304d9ed82cf5a7cbad4, type: 2}
+  Weapon: {fileID: 11400000, guid: 40c7e703ab522d84b9efb6b388456f37, type: 2}
+  Armor: {fileID: 11400000, guid: e22fd251bde489f469995aacea586142, type: 2}
   Stats:
     Experience: 1
     CurrentLevel: 1
@@ -26,7 +26,8 @@ MonoBehaviour:
     MaxMp: 0
     Attack: 0
     Defense: 0
-  Sprite: {fileID: 21300000, guid: fc7145b94826afd4ba6baf622cffe3c2, type: 3}
-  ClassIndex: 2
+    ExpToNext: 0
+  Sprite: {fileID: 21300000, guid: 26180680a5f5ad340ab0e713e45efec7, type: 3}
+  ClassIndex: 3
   WeaponIndex: 2
-  ArmorIndex: 1
+  ArmorIndex: 2

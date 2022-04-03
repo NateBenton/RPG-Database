@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b38e3bf683dc6e4f8ac295cb98e9622, type: 3}
-  m_Name: Class_20210712173133969_TAC7AC61832DC7DH26NXRDQIZBMZLG
+  m_Name: Class_20210926162235294_S77DOG1O25A4U97TEUH1S9NJTC1JW2
   m_EditorClassIdentifier: 
-  Name: Warrior
-  SkillsToLearn: 0
-  SkillFields: []
-  LevelCurve: {fileID: 11400000, guid: a7df043bb485a254d8144ae51834b7c2, type: 2}
+  Name: White Mage
+  SkillsToLearn: 1
+  SkillFields:
+  - SkillLearned: {fileID: 11400000, guid: 6f81ae51f5a3c9c42a1c54f6d384417e, type: 2}
+    LevelLearned: 0
+  LevelCurve: {fileID: 11400000, guid: 4c84b3aa9652b8f4c9df3ca98619920f, type: 2}
   CurveIndex: 1
-  SkillIds: 
-  LevelsLearned: 
+  SkillIds: 02000000
+  LevelsLearned: 01000000

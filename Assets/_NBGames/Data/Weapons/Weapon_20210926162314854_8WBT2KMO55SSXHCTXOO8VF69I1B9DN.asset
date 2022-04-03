@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
-  m_Name: Skill_20210712173147840_6ATN71YKYTW8HFBI4EK9VRMZ4TBX34
+  m_Script: {fileID: 11500000, guid: 0416c8defbbffff45bd2d3f57bece70c, type: 3}
+  m_Name: Weapon_20210926162314854_8WBT2KMO55SSXHCTXOO8VF69I1B9DN
   m_EditorClassIdentifier: 
-  Name: Fire
-  Description: A fiery blast!
-  MpCost: 5
+  Name: Staff
+  AttackModifier: 3
+  DefenseModifier: 0
+  HpModifier: 0
+  MpModifier: 0

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b38e3bf683dc6e4f8ac295cb98e9622, type: 3}
+  m_Name: Class_20210926162230142_TZ3HDI2KUJM4165XJTP7XD4WUCKBSW
+  m_EditorClassIdentifier: 
+  Name: Black Mage
+  SkillsToLearn: 1
+  SkillFields:
+  - SkillLearned: {fileID: 11400000, guid: 857b2d5aa1e0678458c52cc197c305c1, type: 2}
+    LevelLearned: 0
+  LevelCurve: {fileID: 11400000, guid: 4c84b3aa9652b8f4c9df3ca98619920f, type: 2}
+  CurveIndex: 1
+  SkillIds: 01000000
+  LevelsLearned: 01000000

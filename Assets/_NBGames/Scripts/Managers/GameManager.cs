@@ -49,9 +49,9 @@ namespace _NBGames.Scripts.Managers
 
         private void Awake()
         {
-            if (_startingParty == null)
+            if (!_startingParty)
             {
-                Debug.LogError($"Starting Party is null on {gameObject.name}");
+                Debug.LogWarning($"Starting Party is null on {gameObject.name}");
             }
         }
 
@@ -65,7 +65,7 @@ namespace _NBGames.Scripts.Managers
         {
             foreach (var hero in _startingParty.Party)
             {
-                if (hero == null) continue;
+                if (!hero) continue;
                 var newHero = ScriptableObject.CreateInstance<Hero>();
 
                 newHero.Name = hero.Name;
@@ -81,16 +81,17 @@ namespace _NBGames.Scripts.Managers
                     CurrentHp = hero.Class.LevelCurve.Hp[GetLevelAdjusted(hero)], 
                     CurrentMp = hero.Class.LevelCurve.Mp[GetLevelAdjusted(hero)]
                 };
-
+                
                 newHero.Stats.MaxHp = newHero.Stats.CurrentHp;
                 newHero.Stats.MaxMp = newHero.Stats.CurrentMp;
                 
+
                 newHero.Class = hero.Class;
                 newHero.Weapon = hero.Weapon;
                 newHero.Armor = hero.Armor;
                 _party.Add(newHero);
             }
-
+            
             if (_party.Count <= 1)
             {
                 _nextButton.interactable = false;
@@ -111,7 +112,7 @@ namespace _NBGames.Scripts.Managers
             _mpText.text = $"MP: {_hero.Stats.CurrentMp} / {_hero.Stats.MaxMp}";
             AttackDefendInfo();
 
-            if (_hero.Weapon != null)
+            if (_hero.Weapon)
             {
                 _weaponNameText.text = $"{_hero.Weapon.Name} - {_hero.Weapon.AttackModifier}";
                 

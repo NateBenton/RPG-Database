@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
-  m_Name: Skill_20210712173150960_M6K9CEUAKGC79UYBC8UDZDVZ9AJLWR
+  m_Script: {fileID: 11500000, guid: 8f1fa910673fd3041b6c794e36e8b7ce, type: 3}
+  m_Name: Armor_20210926162331726_71N8EQCETUMX6CF6387HSNOWQFX14Z
   m_EditorClassIdentifier: 
-  Name: Thunder
-  Description: Shockingly powerful.
-  MpCost: 8
+  Name: Clothes
+  AttackModifier: 0
+  DefenseModifier: 3
+  HpModifier: 0
+  MpModifier: 0

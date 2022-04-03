@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210712173128937_2P4JD9BZ3QA2SP3YM9BSSC6SAUH30H
+  m_Name: Hero_20210926162155399_MT6WLAG6OSK6YA7NM34DW7IY4ZTTO8
   m_EditorClassIdentifier: 
-  Name: Calvin
-  Description: A warrior.
-  Class: {fileID: 11400000, guid: f4598274371806148b964493a13f34f0, type: 2}
-  Weapon: {fileID: 11400000, guid: 7807fe67c04b50344bab353d995377d2, type: 2}
-  Armor: {fileID: 11400000, guid: 1991a9530e4ebc34b8f54d2e3c6fc3bf, type: 2}
+  Name: Lucas
+  Description: A warrior!
+  Class: {fileID: 11400000, guid: 1462e8797e759a748ba4ce8b239eff3c, type: 2}
+  Weapon: {fileID: 11400000, guid: 75d25a99e2ab47b47973ad645bdf3701, type: 2}
+  Armor: {fileID: 11400000, guid: 3ecac044f77e22f418ca8e8b95ba0684, type: 2}
   Stats:
     Experience: 1
-    CurrentLevel: 6
+    CurrentLevel: 1
     CurrentHp: 0
     CurrentMp: 0
     MaxHp: 0
@@ -30,4 +30,4 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 5a2d505b196c6df4983c6f61a14655b3, type: 3}
   ClassIndex: 1
   WeaponIndex: 1
-  ArmorIndex: 2
+  ArmorIndex: 1

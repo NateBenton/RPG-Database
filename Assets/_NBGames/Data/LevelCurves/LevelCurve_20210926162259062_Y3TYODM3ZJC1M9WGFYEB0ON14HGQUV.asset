@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbc69342efbc9fa48978719682502586, type: 3}
-  m_Name: LevelCurve_20210712173218641_IOPZ9QCLBYRJRCXHE1H27GZP71PZIX
+  m_Name: LevelCurve_20210926162259062_Y3TYODM3ZJC1M9WGFYEB0ON14HGQUV
   m_EditorClassIdentifier: 
-  CurveName: Warrior
+  CurveName: General Curve
   AmountOfLevels: 50
   AttackMultiplier: 1.07
   DefenseMultiplier: 1.07

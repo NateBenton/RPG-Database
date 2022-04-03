@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
-  m_Name: Skill_20210712173154368_IOK96S5301TYDF4W3RMH8MCB808WNT
+  m_Name: Skill_20210926162239855_3AL2NJCYP4U05MLLN80X58LXZ1LZ9B
   m_EditorClassIdentifier: 
-  Name: Cure
-  Description: Heals HP.
+  Name: Fire
+  Description: Fire magic.
   MpCost: 5

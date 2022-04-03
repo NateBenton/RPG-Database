@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee1dba85c7c39b488f40f06a77e6b99, type: 3}
-  m_Name: Skill_20210712173207168_5SFV1XJMS17GERUAF841S40NRB79RX
+  m_Script: {fileID: 11500000, guid: 8f1fa910673fd3041b6c794e36e8b7ce, type: 3}
+  m_Name: Armor_20210926162325734_VB0H41AYPCPV18406NEIDYQNLS2QWI
   m_EditorClassIdentifier: 
-  Name: Poisona
-  Description: Cures poison.
-  MpCost: 8
+  Name: Chainmail
+  AttackModifier: 0
+  DefenseModifier: 10
+  HpModifier: 0
+  MpModifier: 0

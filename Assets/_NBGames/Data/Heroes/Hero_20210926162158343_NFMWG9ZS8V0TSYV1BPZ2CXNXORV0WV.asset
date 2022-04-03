@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af1bcc93cc90b9c438bb1f75c9a1c9fb, type: 3}
-  m_Name: Hero_20210712173311473_0A1XFAUQHWP6MM0M6SUTRI1K4QS9VC
+  m_Name: Hero_20210926162158343_NFMWG9ZS8V0TSYV1BPZ2CXNXORV0WV
   m_EditorClassIdentifier: 
-  Name: Claire
-  Description: A white mage.
-  Class: {fileID: 11400000, guid: 80effa6f56027764b99534baf365f91c, type: 2}
-  Weapon: {fileID: 11400000, guid: 37d14d0e255777e4cb9564073ca4708a, type: 2}
-  Armor: {fileID: 11400000, guid: 4ff94d047dcfb6c4b80de2ee9221c56d, type: 2}
+  Name: Xavier
+  Description: A black mage.
+  Class: {fileID: 11400000, guid: f073073bb2f91e44d9529f4736abcf91, type: 2}
+  Weapon: {fileID: 11400000, guid: 40c7e703ab522d84b9efb6b388456f37, type: 2}
+  Armor: {fileID: 11400000, guid: e22fd251bde489f469995aacea586142, type: 2}
   Stats:
     Experience: 1
     CurrentLevel: 1
@@ -26,7 +26,8 @@ MonoBehaviour:
     MaxMp: 0
     Attack: 0
     Defense: 0
-  Sprite: {fileID: 21300000, guid: 26180680a5f5ad340ab0e713e45efec7, type: 3}
-  ClassIndex: 3
+    ExpToNext: 0
+  Sprite: {fileID: 21300000, guid: fc7145b94826afd4ba6baf622cffe3c2, type: 3}
+  ClassIndex: 2
   WeaponIndex: 2
-  ArmorIndex: 1
+  ArmorIndex: 2

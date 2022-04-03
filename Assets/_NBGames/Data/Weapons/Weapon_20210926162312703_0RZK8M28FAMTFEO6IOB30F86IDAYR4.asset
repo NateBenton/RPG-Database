@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0416c8defbbffff45bd2d3f57bece70c, type: 3}
-  m_Name: Weapon_20210712173235833_LN6RZ4LYAZOXB1J5X4WMY4W4RWSAFT
+  m_Name: Weapon_20210926162312703_0RZK8M28FAMTFEO6IOB30F86IDAYR4
   m_EditorClassIdentifier: 
   Name: Sword
   AttackModifier: 10
